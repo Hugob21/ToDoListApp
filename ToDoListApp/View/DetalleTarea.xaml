@@ -1,0 +1,13 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDoListApp.View.DetalleTarea"
+             Title="Editar Tarea">
+
+    <ContentPage.Content>
+        <VerticalStackLayout Padding="20">
+            <Entry Placeholder="Nombre de la Tarea" Text="{Binding Tarea.Nombre}" />
+            <CheckBox IsChecked="{Binding Tarea.EstaCompletada}" />
+            <Button Text="Guardar" Command="{Binding ComandoGuardar}" />
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>

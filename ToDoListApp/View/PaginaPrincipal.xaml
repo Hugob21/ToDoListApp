@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ToDoListApp.ViewModel"
+             x:Class="ToDoListApp.View.PaginaPrincipal"
+             Title="PaginaPrincipal">
+    <ContentPage.BindingContext>
+        <vm:PaginaPrincipalViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <VerticalStackLayout Padding="20">
+            <Button Text="Agregar Tarea" Command="{Binding ComandoAgregarTarea}" />
+            <CollectionView ItemsSource="{Binding ListaTareas}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal" Padding="5">
+                            <CheckBox IsChecked="{Binding EstaCompletada}" />
+                            <Label Text="{Binding Nombre}" VerticalOptions="Center" />
+                            <Button Text="Editar" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PaginaPrincipalViewModel}}, Path=ComandoEditarTarea}" CommandParameter="{Binding .}" />
+                            <Button Text="Eliminar" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PaginaPrincipalViewModel}}, Path=ComandoEliminarTarea}" CommandParameter="{Binding .}" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>
